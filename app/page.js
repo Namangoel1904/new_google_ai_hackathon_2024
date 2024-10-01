@@ -160,7 +160,7 @@ export default function HeroSection() {
               If you can think it, you can do it.
             </span>
             <h1 className="text-4xl md:text-5xl lg:text-6xl/tight xl:text-7xl/tight text-gray-900 dark:text-white font-bold max-w-4xl capitalize">
-              Welcome to Eddie, your AI support companion!
+              Welcome to Eddie, your AI support counsellor!
             </h1>
             <p className="text-base text-gray-700 dark:text-gray-300 text-center max-w-xl">
               Hi there, I’m Eddie! 😊 I’m here to listen, support, and guide you
