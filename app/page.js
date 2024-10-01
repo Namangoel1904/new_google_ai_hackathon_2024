@@ -157,8 +157,7 @@ export default function HeroSection() {
         <div className="mx-auto lg:max-w-7xl w-full px-5 sm:px-10 md:px-12 lg:px-5">
           <div className="text-center flex flex-col items-center space-y-10">
             <span className="border border-gray-500 px-3 py-0.5 rounded-full bg-gray-50 dark:bg-gray-950 bg-opacity-50 text-gray-700 dark:text-gray-300">
-              The mind is the origin of imperium. If you can think it, you can
-              do it.
+              If you can think it, you can do it.
             </span>
             <h1 className="text-4xl md:text-5xl lg:text-6xl/tight xl:text-7xl/tight text-gray-900 dark:text-white font-bold max-w-4xl capitalize">
               Welcome to Eddie, your AI support companion!
