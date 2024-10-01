@@ -243,7 +243,7 @@ const Navbar = () => {
                   href="#"
                   className="transition ease-linear hover:text-gray-900 dark:hover:text-white"
                 >
-                  Support
+                  Roadmap
                 </Link>
               </li>
               <li>
