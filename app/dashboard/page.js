@@ -1,6 +1,8 @@
 "use client";
 import Link from "next/link";
 import { useState } from "react";
+import { UserButton } from "@clerk/nextjs";
+
 const Navbar = () => {
   const [openNavbar, setOpenNavbar] = useState(false);
   const toggleNavbar = () => {
@@ -68,27 +70,7 @@ const Navbar = () => {
               </li>
             </ul>
             <div className="w-full flex sm:w-max lg:min-w-max lg:items-center">
-              <Link
-                href="/sign-up"
-                className="flex justify-center gap-x-3 items-center text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white
-                  border-b bg-gray-700 dark:border-blue-300 hover:border-b-gray-900 dark:hover:border-b-white bg-transparent"
-              >
-                Stay in touch!
-                <span>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                    className="w-5 h-5"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M5 10a.75.75 0 01.75-.75h6.638L10.23 7.29a.75.75 0 111.04-1.08l3.5 3.25a.75.75 0 010 1.08l-3.5 3.25a.75.75 0 11-1.04-1.08l2.158-1.96H5.75A.75.75 0 015 10z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                </span>
-              </Link>
+              <UserButton />
             </div>
           </div>
           <div className="flex items-center justify-end relative z-60 lg:hidden">
@@ -156,27 +138,19 @@ export default function HeroSection() {
         </div>
         <div className="mx-auto lg:max-w-7xl w-full px-5 sm:px-10 md:px-12 lg:px-5">
           <div className="text-center flex flex-col items-center space-y-10">
-            <span className="border border-gray-500 px-3 py-0.5 rounded-full bg-gray-50 dark:bg-gray-950 bg-opacity-50 text-gray-700 dark:text-gray-300">
-              If you can think it, you can do it.
-            </span>
             <h1 className="text-4xl md:text-5xl lg:text-6xl/tight xl:text-7xl/tight text-gray-900 dark:text-white font-bold max-w-4xl capitalize">
-              Welcome to Eddie, your AI support counsellor!
+              Thank you for joining the Waitlist for Eddie!
             </h1>
             <p className="text-base text-gray-700 dark:text-gray-300 text-center max-w-xl">
-              Hi there, I’m Eddie! 😊 I’m here to listen, support, and guide you
-              whenever you need a safe space to talk or when things feel a bit
-              overwhelming. Whether you're dealing with stress, anxiety, or just
-              need someone to chat with, I’m here to help. Think of me as a
-              friendly companion who's always ready to listen, no judgment, just
-              understanding. You don’t have to go through anything alone – I’m
-              just a message away!
+              Eddie is currently in Beta. We are happy to have you on board.{" "}
+              <br /> We will keep you updated with any progress.
             </p>
             <div className="flex justify-center">
               <Link
                 href="/chat"
                 className="px-8 h-12 rounded-full flex items-center gap-x-3 bg-emerald-700 text-white hover:bg-opacity-80"
               >
-                Let's talk
+                You can try the public beta here.
                 <span>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"

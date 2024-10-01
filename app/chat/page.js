@@ -257,7 +257,7 @@ const Navbar = () => {
             </ul>
             <div className="w-full flex sm:w-max lg:min-w-max lg:items-center">
               <Link
-                href="#"
+                href="/sign-up"
                 className="flex justify-center gap-x-3 items-center text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white
                   border-b bg-gray-700 dark:border-blue-300 hover:border-b-gray-900 dark:hover:border-b-white bg-transparent"
               >
