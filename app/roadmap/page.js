@@ -2,54 +2,6 @@
 import Link from "next/link";
 import { useState } from "react";
 
-import Image from "next/image";
-
-const TeamSection = () => {
-  return (
-    <section className="py-5">
-      <div className="max-w-7xl mx-auto px-5 sm:px-10 md:px-12 lg:px-5 space-y-16">
-        <div className="max-w-2xl">
-          <h1 className="font-bold text-gray-800 dark:text-white text-3xl">
-            Our Team
-          </h1>
-        </div>
-        <div className="relative grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          <div className="p-5 md:p-6 space-y-6 rounded-lg bg-white dark:bg-gray-950 border border-gray-100 dark:border-gray-900 shadow-2xl shadow-gray-100/70 dark:shadow-gray-800/80">
-            <div className="flex items-start gap-4">
-              <div className="space-y-1 flex-1">
-                <h2 className="text-lg font-semibold leading-none text-gray-800 dark:text-gray-200">
-                  Ritwik Trivedi
-                </h2>
-                <p className="text-gray-600 dark:text-gray-400">IIT-Madras</p>
-              </div>
-            </div>
-          </div>
-          <div className="p-5 md:p-6 space-y-6 rounded-lg bg-white dark:bg-gray-950 border border-gray-100 dark:border-gray-900 shadow-2xl shadow-gray-100/70 dark:shadow-gray-800/80">
-            <div className="flex items-start gap-4">
-              <div className="space-y-1 flex-1">
-                <h2 className="text-lg font-semibold leading-none text-gray-800 dark:text-gray-200">
-                  Kamakshi
-                </h2>
-                <p className="text-gray-600 dark:text-gray-400">IIT-Madras</p>
-              </div>
-            </div>
-          </div>
-          <div className="p-5 md:p-6 space-y-6 rounded-lg bg-white dark:bg-gray-950 border border-gray-100 dark:border-gray-900 shadow-2xl shadow-gray-100/70 dark:shadow-gray-800/80">
-            <div className="flex items-start gap-4">
-              <div className="space-y-1 flex-1">
-                <h2 className="text-lg font-semibold leading-none text-gray-800 dark:text-gray-200">
-                  Naman Goel
-                </h2>
-                <p className="text-gray-600 dark:text-gray-400">IIT-Madras</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-};
-
 const Navbar = () => {
   const [openNavbar, setOpenNavbar] = useState(false);
   const toggleNavbar = () => {
@@ -93,7 +45,7 @@ const Navbar = () => {
               </li>
               <li>
                 <Link
-                  href="#"
+                  href="/team"
                   className="transition ease-linear hover:text-gray-900 dark:hover:text-white"
                 >
                   Team
@@ -213,7 +165,40 @@ export default function HeroSection() {
         </div>
         <div className="mx-auto lg:max-w-7xl w-full px-5 sm:px-10 md:px-12 lg:px-5">
           <div className="text-center flex flex-col items-center space-y-10">
-            <TeamSection />
+            <h1 className="text-4xl md:text-5xl lg:text-6xl/tight xl:text-7xl/tight text-gray-900 dark:text-white font-bold max-w-4xl capitalize">
+              Roadmap
+            </h1>
+            <p className="text-base text-gray-700 dark:text-gray-300 text-center max-w-xl">
+              Eddie is currently in Beta. <br /> We plan to incorporate the
+              following as we develop Eddie:
+            </p>
+            <ul>
+              <li>Mutlilingual support</li>
+              <li>Persistance by using a realtime DB</li>
+              <li>RAG to help student learn material better</li>
+            </ul>
+            <div className="flex justify-center">
+              <Link
+                href="/chat"
+                className="px-8 h-12 rounded-full flex items-center gap-x-3 bg-emerald-700 text-white hover:bg-opacity-80"
+              >
+                You can try the public beta here.
+                <span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                    className="w-5 h-5"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M5 10a.75.75 0 01.75-.75h6.638L10.23 7.29a.75.75 0 111.04-1.08l3.5 3.25a.75.75 0 010 1.08l-3.5 3.25a.75.75 0 11-1.04-1.08l2.158-1.96H5.75A.75.75 0 015 10z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                </span>
+              </Link>
+            </div>
           </div>
         </div>
       </section>
