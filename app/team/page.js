@@ -1,191 +1,52 @@
 "use client";
-
 import Link from "next/link";
+import { useState } from "react";
 
-import { Box, Button, Stack, TextField } from "@mui/material";
-import { useState, useRef, useEffect } from "react";
+import Image from "next/image";
 
-const Chatbox = () => {
-  const [messages, setMessages] = useState([
-    {
-      role: "assistant",
-      content: "Hi! I am Eddie. How are you feeling today?",
-    },
-  ]);
-
-  const [message, setMessage] = useState("");
-
-  const [isLoading, setIsLoading] = useState(false);
-
-  const sendMessage = async () => {
-    if (!message.trim() || isLoading) return; // Don't send empty messages
-    setIsLoading(true);
-
-    setMessage("");
-    setMessages((messages) => [
-      ...messages,
-      { role: "user", content: message },
-      { role: "assistant", content: "" },
-    ]);
-
-    try {
-      const response = await fetch("/api/chat", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify([...messages, { role: "user", content: message }]),
-      });
-
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
-
-      const reader = response.body.getReader();
-      const decoder = new TextDecoder();
-
-      while (true) {
-        const { done, value } = await reader.read();
-        if (done) break;
-        const text = decoder.decode(value || new Uint8Array(), {
-          stream: true,
-        });
-        setMessages((messages) => {
-          let lastMessage = messages[messages.length - 1];
-          let otherMessages = messages.slice(0, messages.length - 1);
-          return [
-            ...otherMessages,
-            { ...lastMessage, content: lastMessage.content + text },
-          ];
-        });
-      }
-    } catch (error) {
-      console.error("Error:", error);
-      setMessages((messages) => [
-        ...messages,
-        {
-          role: "assistant",
-          content:
-            "I'm sorry, but I encountered an error. Please try again later.",
-        },
-      ]);
-    }
-
-    setIsLoading(false);
-  };
-
-  const handleKeyPress = (event) => {
-    // Check if the pressed key is the Enter key and the shift key is not pressed down at the same time
-    if (event.key === "Enter" && !event.shiftKey) {
-      event.preventDefault();
-      sendMessage();
-    }
-  };
-
-  const messagesEndRef = useRef(null);
-  const chatContainerRef = useRef(null);
-
-  //   const scrollToBottom = () => {
-  //     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  //   };
-
-  //   useEffect(() => {
-  //     scrollToBottom();
-  //   }, [messages]);
-
-  const scrollToBottom = () => {
-    chatContainerRef.current?.scrollTo({
-      top: chatContainerRef.current.scrollHeight,
-      behavior: "smooth",
-    });
-  };
-
-  useEffect(() => {
-    scrollToBottom();
-  }, [messages]);
-
-  const formatMessage = (message) => {
-    // Replace newline characters with line breaks
-    return message
-      .replace(/[\r\n]/g, " ")
-      .replace(/(^")|("$)/g, "")
-      .trim();
-  };
-
+const TeamSection = () => {
   return (
-    <Box
-      width="80%"
-      //   marginTop={"20px"}
-      maxWidth="600px"
-      height="60vh"
-      display="flex"
-      flexDirection="column"
-      justifyContent="center"
-      alignItems="center"
-      p={2} // Add padding to avoid text sticking to edges
-    >
-      <Stack
-        direction={"column"}
-        width="auto"
-        height="500px"
-        border="1px solid black"
-        p={2}
-        spacing={3}
-      >
-        <Stack
-          direction={"column"}
-          spacing={2}
-          flexGrow={1}
-          overflow="auto"
-          maxHeight="100%"
-          ref={chatContainerRef}
-        >
-          {messages.map((message, index) => (
-            <Box
-              key={index}
-              display="flex"
-              justifyContent={
-                message.role === "assistant" ? "flex-start" : "flex-end"
-              }
-            >
-              <Box
-                bgcolor={
-                  message.role === "assistant" ? "#058743" : "secondary.main"
-                }
-                color="white"
-                borderRadius={16}
-                p={3}
-              >
-                {formatMessage(message.content)}
-              </Box>
-            </Box>
-          ))}
-          <div ref={messagesEndRef} />
-        </Stack>
-        <Stack direction={"row"} spacing={2}>
-          <TextField
-            label="Message"
-            fullWidth
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-            // onPress={handleKeyPress}
-            onKeyDown={(e) => {
-              if (e.key === "Enter") {
-                handleKeyPress(e);
-              }
-            }}
-            disabled={isLoading}
-          />
-          <Button
-            variant="contained"
-            onClick={sendMessage}
-            disabled={isLoading}
-          >
-            {isLoading ? "Sending..." : "Send"}
-          </Button>
-        </Stack>
-      </Stack>
-    </Box>
+    <section className="py-5">
+      <div className="max-w-7xl mx-auto px-5 sm:px-10 md:px-12 lg:px-5 space-y-16">
+        <div className="max-w-2xl">
+          <h1 className="font-bold text-gray-800 dark:text-white text-3xl">
+            Our Team
+          </h1>
+        </div>
+        <div className="relative grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="p-5 md:p-6 space-y-6 rounded-lg bg-white dark:bg-gray-950 border border-gray-100 dark:border-gray-900 shadow-2xl shadow-gray-100/70 dark:shadow-gray-800/80">
+            <div className="flex items-start gap-4">
+              <div className="space-y-1 flex-1">
+                <h2 className="text-lg font-semibold leading-none text-gray-800 dark:text-gray-200">
+                  Ritwik Trivedi
+                </h2>
+                <p className="text-gray-600 dark:text-gray-400">IIT-Madras</p>
+              </div>
+            </div>
+          </div>
+          <div className="p-5 md:p-6 space-y-6 rounded-lg bg-white dark:bg-gray-950 border border-gray-100 dark:border-gray-900 shadow-2xl shadow-gray-100/70 dark:shadow-gray-800/80">
+            <div className="flex items-start gap-4">
+              <div className="space-y-1 flex-1">
+                <h2 className="text-lg font-semibold leading-none text-gray-800 dark:text-gray-200">
+                  Kamakshi
+                </h2>
+                <p className="text-gray-600 dark:text-gray-400">IIT-Madras</p>
+              </div>
+            </div>
+          </div>
+          <div className="p-5 md:p-6 space-y-6 rounded-lg bg-white dark:bg-gray-950 border border-gray-100 dark:border-gray-900 shadow-2xl shadow-gray-100/70 dark:shadow-gray-800/80">
+            <div className="flex items-start gap-4">
+              <div className="space-y-1 flex-1">
+                <h2 className="text-lg font-semibold leading-none text-gray-800 dark:text-gray-200">
+                  Naman Goel
+                </h2>
+                <p className="text-gray-600 dark:text-gray-400">IIT-Madras</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 };
 
@@ -224,15 +85,7 @@ const Navbar = () => {
             <ul className="flex flex-col gap-y-5 text-gray-700 dark:text-gray-300 lg:items-center lg:flex-row lg:gap-x-5 lg:h-full lg:justify-center lg:flex-1">
               <li>
                 <Link
-                  href="/"
-                  className="transition ease-linear hover:text-gray-900 dark:hover:text-white"
-                >
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/team"
+                  href="#"
                   className="transition ease-linear hover:text-gray-900 dark:hover:text-white"
                 >
                   Team
@@ -246,6 +99,14 @@ const Navbar = () => {
                   Roadmap
                 </Link>
               </li>
+              {/* <li>
+                <Link
+                  href="#"
+                  className="transition ease-linear hover:text-gray-900 dark:hover:text-white"
+                >
+                  Services
+                </Link>
+              </li> */}
               <li>
                 <Link
                   href="https://devfolio.co/google-genaiexchange"
@@ -343,8 +204,8 @@ export default function HeroSection() {
           </div>
         </div>
         <div className="mx-auto lg:max-w-7xl w-full px-5 sm:px-10 md:px-12 lg:px-5">
-          <div className="text-center flex flex-col items-center">
-            <Chatbox />
+          <div className="text-center flex flex-col items-center space-y-10">
+            <TeamSection />
           </div>
         </div>
       </section>

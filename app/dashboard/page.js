@@ -38,7 +38,7 @@ const Navbar = () => {
             <ul className="flex flex-col gap-y-5 text-gray-700 dark:text-gray-300 lg:items-center lg:flex-row lg:gap-x-5 lg:h-full lg:justify-center lg:flex-1">
               <li>
                 <Link
-                  href="#"
+                  href="/team"
                   className="transition ease-linear hover:text-gray-900 dark:hover:text-white"
                 >
                   Team
@@ -46,7 +46,7 @@ const Navbar = () => {
               </li>
               <li>
                 <Link
-                  href="#"
+                  href="/roadmap"
                   className="transition ease-linear hover:text-gray-900 dark:hover:text-white"
                 >
                   Roadmap
