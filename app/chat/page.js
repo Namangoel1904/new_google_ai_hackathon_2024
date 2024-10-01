@@ -114,7 +114,7 @@ const Chatbox = () => {
 
   return (
     <Box
-      width="100vh"
+      width="80%"
       //   marginTop={"20px"}
       maxWidth="600px"
       height="60vh"
@@ -126,7 +126,7 @@ const Chatbox = () => {
     >
       <Stack
         direction={"column"}
-        width="500px"
+        width="auto"
         height="500px"
         border="1px solid black"
         p={2}
