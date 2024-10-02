@@ -174,6 +174,7 @@ export default function HeroSection() {
             </p>
             <ul>
               <li>Mutlilingual support</li>
+              <li>Providing helplines for suicidal thoughts and distress</li>
               <li>Persistance by using a realtime DB</li>
               <li>RAG to help student learn material better</li>
             </ul>
