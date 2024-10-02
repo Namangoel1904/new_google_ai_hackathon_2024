@@ -22,7 +22,7 @@ export async function POST(req) {
   const data = await req.json();
   const completion = await openai.chat.completions.create({
     messages: [{ role: "system", content: systemPrompt }, ...data],
-    model: "google/gemini-flash-1.5-exp",
+    model: "google/gemini-flash-1.5",
   });
 
   const responseContent = completion.choices[0].message.content;
